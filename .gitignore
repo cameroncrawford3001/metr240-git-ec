@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+results/*.png
+results/*.csv
+# large/raw data
+/data/
+*.bin
