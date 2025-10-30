@@ -1,0 +1,31 @@
+On branch main
+Your branch is ahead of 'origin/main' by 6 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	TRANSCRIPT.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+*   b88434e (HEAD -> main) Merge branch 'feature/refactor'
+|\  
+| * 728a543 (feature/refactor) refactor: rename mean->avg in output schema
+* | 443ea87 feat: switch field from sin to cos
+|/  
+* 04a5d71 docs: add title to README
+* b410564 chore: add .gitignore to keep large and generated files out
+* 11e6d96 feat: add compute_stats and first results
+* 00cdc7e (origin/main) chore: init repo with project scaffold
+diff --git a/src/compute_stats.py b/src/compute_stats.py
+index f6fd59c..7a6e4ac 100644
+--- a/src/compute_stats.py
++++ b/src/compute_stats.py
+@@ -4,7 +4,7 @@ p = argparse.ArgumentParser()
+ p.add_argument("-n", type=int, default=1000, help="grid size")
+ args = p.parse_args()
+ field = np.cos(np.linspace(0, 2*np.pi, args.n))  # stand-in for a model field
+-stats = {"N": args.n, "min": float(field.min()), "max": float(field.max()), "mean": float(field.mean())}
++stats = {"N": args.n, "min": float(field.min()), "max": float(field.max()), "avg": float(field.mean())}
+ with open("results/summary.csv", "w", newline="") as f:
+     w = csv.DictWriter(f, fieldnames=stats.keys()); w.writeheader(); w.writerow(stats)
+ print("Wrote results/summary.csv", stats)
